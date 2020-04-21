@@ -22,13 +22,21 @@ sudo apt-get install typora
 
 # Anaconda Python
 wget https://repo.anaconda.com/archive/Anaconda3-2020.02-Linux-x86_64.sh -O ~/anaconda3.sh
-bash anaconda3.sh -b -p $HOME/anaconda3
+bash anaconda3.sh -b -p ~/anaconda3
 rm ~/anaconda3.sh
 
 # PHP, Composer and Laravel
 sudo apt install php-cli php-zip php-mbstring php-xml
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 composer global require laravel/installer
+
+# Node 12, NPM and Yarn
+sudo apt install -y curl
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+sudo apt-get install -y nodejs
+curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt-get update && sudo apt-get install yarn
 
 # PhpStorm
 sudo snap install phpstorm --classic
@@ -40,3 +48,9 @@ sudo apt install tilix
 sudo add-apt-repository ppa:hluk/copyq
 sudo apt update
 sudo apt install copyq
+
+# Docker
+sudo apt install -y docker.io docker-compose
+sudo systemctl enable --now docker
+sudo groupadd docker
+sudo gpasswd -a $USER docker
