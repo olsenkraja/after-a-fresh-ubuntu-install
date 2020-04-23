@@ -26,7 +26,7 @@ bash anaconda3.sh -b -p ~/anaconda3
 rm ~/anaconda3.sh
 
 # PHP, Composer and Laravel
-sudo apt install php-cli php-zip php-mbstring php-xml
+sudo apt install -y php-cli php-zip php-mbstring php-xml
 curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 composer global require laravel/installer
 
@@ -42,15 +42,24 @@ sudo apt-get update && sudo apt-get install yarn
 sudo snap install phpstorm --classic
 
 # Tilix
-sudo apt install tilix
+sudo apt install -y tilix
 
 # CopyQ
 sudo add-apt-repository ppa:hluk/copyq
 sudo apt update
-sudo apt install copyq
+sudo apt install -y copyq
 
 # Docker
 sudo apt install -y docker.io docker-compose
 sudo systemctl enable --now docker
 sudo groupadd docker
 sudo gpasswd -a $USER docker
+
+# VLC
+sudo apt install -y vlc
+
+# Flameshot
+apt install -y flameshot
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name "'flameshot'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding "'<Shift><Alt>4'"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command "'flameshot gui'"
